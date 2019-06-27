@@ -16,6 +16,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Oxygen+Mono&display=swap' },
       {
         rel: 'stylesheet',
         href:
@@ -45,7 +46,8 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/vuetify',
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    ['@nuxtjs/moment', ['id']]
   ],  
   /*
   ** vuetify module configuration

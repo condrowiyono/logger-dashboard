@@ -126,6 +126,11 @@ export default {
           title: 'Peralatan',
           to: '/equipments'
         },
+        {
+          icon: 'business',
+          title: 'Log',
+          to: '/logs'
+        },
       ],
       miniVariant: false,
       right: true,

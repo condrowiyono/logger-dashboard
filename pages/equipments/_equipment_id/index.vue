@@ -3,6 +3,16 @@
     <page-header :title="item.name" :to="'/equipments'" />
     <v-container fluid>
       <v-card>
+        <div style="padding:16px" text-xs-center>
+          <qr-code v-if="item.qrcode" :text="item.qrcode"></qr-code>
+          <div v-else>No Qr Code </div>
+          <v-flex >
+            <v-btn icon title="Regenerate qrcode">
+              <v-icon>refresh</v-icon>
+            </v-btn>
+            <span style="font-family: 'Oxygen Mono', monospace; font-size:20px">{{item.qrcode}}</span>
+          </v-flex>
+        </div>
         <v-list two-line >
           <v-list-tile>
             <v-list-tile-content>
@@ -80,6 +90,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-</style>
