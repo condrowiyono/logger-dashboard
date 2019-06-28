@@ -1,13 +1,13 @@
 <template>
   <v-layout>
-    <v-flex >
+    <v-flex id="printable" >
       <div style="padding:16px" class="text-xs-center">
         <div style="font-family: 'Oxygen Mono', monospace; font-size:14px">{{item.equipment.qrcode}}</div>
         <div style="width:100px;height:100px;margin:auto">
           <qr-code :size="100" v-if="item.equipment.qrcode" :text="item.equipment.qrcode"></qr-code>
         </div>
         <br/>
-        <div class="title">{{item.equipment.name}}</div>
+        <div class="title">{{item.equipment.name}} <v-btn icon @click="print" ><v-icon>print</v-icon></v-btn></div>
       </div>
       <div class="v-subheader theme--light">Informasi Waktu</div>
       <v-container fluid>
@@ -43,18 +43,20 @@
       <v-container grid-list-md >
         <v-layout row wrap>
           <v-flex xs3 v-for="(image,idx) in item.images" :key="idx">
-            <v-img
+            <!-- <v-img
               :src="image.path"
               aspect-ratio="1"
-              width="200"
-              height="200"
+              
               max-width="200"
               max-height="200"
               min-width="100"
               min-height="100"
               style="margin:5px"
             >
-            </v-img>
+            </v-img> -->
+            <img :src="image.path" 
+              width="200"
+              height="200" />
           </v-flex>
         </v-layout>
       </v-container>
@@ -64,6 +66,8 @@
 <script>
 
 import {mapState} from 'vuex';
+import { Printd } from 'printd';
+const d = new Printd();
 
 export default {
   async fetch({store, params}) {
@@ -76,5 +80,10 @@ export default {
       },
     }),
   },
+  methods: {
+    print() {
+       d.print( document.getElementById('printable'), [`@media print{table ,td, th {border-collapse: collapse; padding:2px;border:1px solid black;} .no-print, .no-print *, button, .v-btn * {display: none !important;}}`] )
+    },
+  }
 }
 </script>

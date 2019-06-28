@@ -14,7 +14,7 @@
     <v-spacer></v-spacer>
     <div class="page-header-right">
       <v-btn icon>
-        <v-icon class="text--secondary">refresh</v-icon>
+        <v-icon @click="print" class="text--secondary">print</v-icon>
       </v-btn>
     </div>
   </v-layout>
@@ -23,6 +23,11 @@
 <script>
 export default {
   props: ['title','to'],
+  methods: {
+    print() {
+      this.$emit('on-print')
+    }
+  }
 }
 </script>
 <style lang="stylus" scoped>

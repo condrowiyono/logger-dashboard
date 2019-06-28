@@ -1,7 +1,7 @@
 <template>
   <div>
-    <page-header :title="item.name" :to="'/equipments'" />
-    <v-container fluid>
+    <page-header :title="item.name" :to="'/equipments'" @on-print="print" />
+    <v-container fluid id="printable">
       <v-card>
         <div style="padding:16px" text-xs-center>
           <qr-code v-if="item.qrcode" :text="item.qrcode"></qr-code>
@@ -76,6 +76,8 @@
 
 <script>
 import {mapState} from 'vuex';
+import { Printd } from 'printd';
+const d = new Printd();
 
 export default {
   async fetch({store, params}) {
@@ -89,6 +91,9 @@ export default {
     }),
   },
   methods: {
+    print() {
+      d.print( document.getElementById('printable'), [`@media print{table ,td, th {border-collapse: collapse; padding:2px;border:1px solid black;} .no-print, .no-print *, button, .v-btn * {display: none !important;}}`] )
+    },
     regenerateQrcode() {
       this.$dialog.warning({
         persistent: true,

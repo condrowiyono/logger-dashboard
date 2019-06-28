@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :title="'Peralatan'" />
+    <page-header :title="'Peralatan'" @on-print="print" />
     <v-container fluid>
       <v-card>
         <v-toolbar card  color="#fff">
@@ -24,7 +24,7 @@
             <v-icon>filter_list</v-icon>
           </v-btn>
         </v-card-title>
-        <v-card-text class="pa-0">
+        <v-card-text class="pa-0" id="printable">
           <template>
             <v-data-table
               :headers="headers"
@@ -37,9 +37,9 @@
               <template v-slot:items="props">
                 
                 <td> {{ props.item.name }}
-                  <v-tooltip bottom>
+                  <v-tooltip bottom >
                     <template v-slot:activator="{ on }">
-                      <v-icon v-on="on">more_horiz</v-icon>
+                      <v-icon class="no-print" v-on="on">more_horiz</v-icon>
                     </template>
                     <span>{{props.item.facility.name}} > {{props.item.subfacility.name}} </span>
                   </v-tooltip>
@@ -53,18 +53,21 @@
                 <td class="justify-center layout px-0">
                   <v-btn 
                     icon
+                    class="no-print" 
                     :to="'/equipments/'+props.item.id"
                   >
                     <v-icon small> search </v-icon>
                   </v-btn>
                   <v-btn 
                     icon
+                    class="no-print" 
                     :to="'/equipments/'+props.item.id+'/edit'"
                   >
                     <v-icon small> edit </v-icon>
                   </v-btn>
                   <v-btn 
                     icon
+                    class="no-print" 
                     @click="id= props.item.id; dialog = true;"
                   >
                   <v-icon small > delete </v-icon>
@@ -105,6 +108,8 @@
 
 <script>
 import {mapState} from 'vuex';
+import { Printd } from 'printd';
+const d = new Printd();
 
 export default {
   async fetch({store}) {
@@ -165,6 +170,9 @@ export default {
     }
   },
   methods: {
+    print() {
+       d.print( document.getElementById('printable'), [`@media print{table ,td, th {border-collapse: collapse; padding:2px;border:1px solid black;} .no-print, .no-print *, button, .v-btn * {display: none !important;}}`] )
+    },
     destroy() {
       this.$store.dispatch('equipments/delete', {id: this.id}).then(() => { 
         this.$store.dispatch('equipments/get');

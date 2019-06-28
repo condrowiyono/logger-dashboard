@@ -19,6 +19,7 @@
     "lodash.assign": "^4.2.0",
     "lodash.merge": "^4.6.1",
     "nuxt": "^2.0.0",
+    "printd": "^1.4.0",
     "vue-qrcode-component": "^2.1.1",
     "vuetify-dialog": "^0.3.6"
   },

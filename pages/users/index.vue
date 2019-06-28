@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :title="'User'" />
+    <page-header :title="'User'" @on-print="print"/>
     <v-container fluid>
       <v-card>
         <v-toolbar flat color="white">
@@ -23,7 +23,7 @@
             <v-icon>filter_list</v-icon>
           </v-btn>
         </v-card-title>
-        <v-card-text class="pa-0">
+        <v-card-text class="pa-0" id="printable">
           <template>
             <v-data-table
               :headers="headers"
@@ -94,6 +94,8 @@
 
 <script>
 import {mapState} from 'vuex';
+import { Printd } from 'printd';
+const d = new Printd();
 
 export default {
   async fetch({store}) {
@@ -143,15 +145,18 @@ export default {
       id: 0,
       headers: [
         { text: 'Nama', value: 'name', sortable: false},
-        { text: 'Email', value: 'email' },
-        { text: 'No Telepon', value: 'phoneNumber' },
-        { text: 'Role', value: 'role' },
-        { text: 'Position', value: 'position' },
+        { text: 'Email', value: 'email',sortable: false },
+        { text: 'No Telepon', value: 'phoneNumber',sortable: false },
+        { text: 'Role', value: 'role',sortable: false },
+        { text: 'Position', value: 'position' ,sortable: false},
         { text: 'Actions', value: 'action', sortable: false }
       ],
     }
   },
   methods: {
+    print() {
+       d.print( document.getElementById('printable'), [`@media print{table ,td, th {border-collapse: collapse; padding:2px;border:1px solid black;} .no-print, .no-print *, button, .v-btn * {display: none !important;}}`] )
+    },
     destroy() {
       this.$store.dispatch('users/delete', {id: this.id}).then(() => { 
         this.$store.dispatch('users/get');

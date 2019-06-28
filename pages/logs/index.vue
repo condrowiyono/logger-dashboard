@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :title="'Sub Fasilitas'" />
+    <page-header :title="'Sub Fasilitas'" @on-print="print" />
     <v-container fluid>
       <v-card>
         <v-toolbar card  color="#fff">
@@ -76,7 +76,7 @@
           </v-flex>
         </v-layout>
         </v-card-title>
-        <v-card-text class="pa-0">
+        <v-card-text class="pa-0" id="printable">
           <template>
             <v-data-table
               :headers="headers"
@@ -96,7 +96,8 @@
                 <td>{{ props.item.followUp }}</td>
                 <td>{{ props.item.desc }}</td>
                 <td class="justify-center layout px-0">
-                  <v-btn 
+                  <v-btn
+                    class="no-print" 
                     icon
                     :to="'/logs/'+ props.item.id"
                   >
@@ -119,6 +120,8 @@
 
 <script>
 import {mapState} from 'vuex';
+import { Printd } from 'printd';
+const d = new Printd();
 
 export default {
   created() {
@@ -190,6 +193,9 @@ export default {
     }
   },
   methods: {
+    print() {
+       d.print( document.getElementById('printable'), [`@media print{table ,td, th {border-collapse: collapse; padding:2px;border:1px solid black;} .no-print, .no-print *, button, .v-btn * {display: none !important;}}`] )
+    },
     filter() {
       this.$store.commit('logs/setParams', {dateFrom: this.date.from, dateTo: this.date.to});
       this.loading = true
