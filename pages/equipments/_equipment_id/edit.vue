@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-header :title="'Edit PEralatan'" :to="'/equipments'" />
+    <page-header :title="'Edit Peralatan'" :to="'/equipments'" />
     <v-container fluid>
       <v-card>
         <v-card-title class="headline">Edit Peralatan</v-card-title>

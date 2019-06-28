@@ -6,6 +6,7 @@
         <v-toolbar card  color="#fff">
           <v-toolbar-title>Manajemen Peralatan</v-toolbar-title>
           <v-spacer></v-spacer>
+          <v-btn flat color="blue darken-1" @click="download" >Download</v-btn>
           <v-btn flat color="blue darken-1" :to="'/equipments/new'" >Tambah Baru</v-btn>
         </v-toolbar>
         <v-divider></v-divider>
@@ -176,6 +177,17 @@ export default {
         .then(result => {
           this.loading = false
         })
+    },
+    download() {
+      this.$axios.get('/equipments/download-csv', { responseType: 'blob'
+      }).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'peralatan.csv');
+        document.body.appendChild(link);
+        link.click();
+      });
     }
   }
 }

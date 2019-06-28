@@ -40,19 +40,23 @@
         </div>
       </v-container>
       <div class="v-subheader theme--light">Gambar</div>
-      <v-container style="display:flex;overflow:auto" fluid>
-        <v-img v-for="(image,idx) in item.images" :key="idx"
-          :src="image.path"
-          aspect-ratio="1"
-          width="200"
-          height="200"
-          max-width="200"
-          max-height="200"
-          min-width="100"
-          min-height="100"
-          style="margin:5px"
-        >
-        </v-img>
+      <v-container grid-list-md >
+        <v-layout row wrap>
+          <v-flex xs3 v-for="(image,idx) in item.images" :key="idx">
+            <v-img
+              :src="image.path"
+              aspect-ratio="1"
+              width="200"
+              height="200"
+              max-width="200"
+              max-height="200"
+              min-width="100"
+              min-height="100"
+              style="margin:5px"
+            >
+            </v-img>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-flex>
   </v-layout>

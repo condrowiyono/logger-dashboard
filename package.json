@@ -19,7 +19,8 @@
     "lodash.assign": "^4.2.0",
     "lodash.merge": "^4.6.1",
     "nuxt": "^2.0.0",
-    "vue-qrcode-component": "^2.1.1"
+    "vue-qrcode-component": "^2.1.1",
+    "vuetify-dialog": "^0.3.6"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",

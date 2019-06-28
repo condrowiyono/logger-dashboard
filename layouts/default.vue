@@ -54,7 +54,7 @@
           <v-icon>person</v-icon>
         </v-btn>
         <v-list class="pa-0">
-          <v-list-tile ripple="ripple" rel="noopener">
+          <v-list-tile :to="'/users/'+$auth.user.id" ripple="ripple" rel="noopener">
             <v-list-tile-content>
               <v-list-tile-title>{{$auth.user.name}}</v-list-tile-title>
             </v-list-tile-content>
@@ -65,7 +65,7 @@
               <v-list-tile-title>Petunjuk Penggunaan</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile ripple="ripple" rel="noopener">
+          <v-list-tile :to="'/about'" ripple="ripple" rel="noopener">
             <v-list-tile-content>
               <v-list-tile-title>Tentang Aplikasi</v-list-tile-title>
             </v-list-tile-content>
@@ -127,7 +127,7 @@ export default {
           to: '/equipments'
         },
         {
-          icon: 'business',
+          icon: 'history',
           title: 'Log',
           to: '/logs'
         },
@@ -135,7 +135,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Logger - Aplikasi Saiffan'
+      title: 'Logger - Dashboard'
     }
   },
   methods: {

@@ -13,7 +13,8 @@ export const state = () => ({
     rowsPerPageItems: [1, 2, 4, 8, 16,32,80]
   },
   params: {
-    name: '',
+    dateFrom: '',
+    dateTo: '',
   }
 });
 
@@ -59,12 +60,13 @@ export const getters = {
 export const actions = {
   async get({commit, rootState}) {
     const { sortBy, descending, page, rowsPerPage } = rootState.logs.pagination
-    const { name } = rootState.logs.params
+    const { dateFrom, dateTo } = rootState.logs.params
     
     var params = {
       limit: rowsPerPage,
       page,
-      name,
+      date_from: dateFrom,
+      date_to: dateTo,
     } 
     await this.$axios.get(`/logs`, { params })
       .then((res) => {

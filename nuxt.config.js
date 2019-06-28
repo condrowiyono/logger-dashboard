@@ -47,7 +47,8 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    ['@nuxtjs/moment', ['id']]
+    ['@nuxtjs/moment', ['id']],
+    'vuetify-dialog/nuxt',
   ],  
   /*
   ** vuetify module configuration

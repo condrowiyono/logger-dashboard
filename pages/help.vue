@@ -4,23 +4,75 @@
     <v-container fluid>
       <v-card>
         <v-card-text>
-        <p>
-          Nuxt.js - is a framework for creating Universal Vue.js Applications.
-          Our goal is to create a framework flexible enough that you can use it as a main project base or in addition to your current project based on Node.js.
-          Nuxt.js presets all the configuration needed to make your development of a Vue.js Application more enjoyable.
-        </p>
-        <p>
-          Framework7 - is a free and open source HTML mobile framework to develop hybrid mobile apps or web apps with iOS or Android (Material) native look and feel. It is also an indispensable prototyping apps tool to show working app prototype as soon as possible in case you need to. Framework7 is created by Vladimir Kharlampidi (iDangero.us).
-        </p>
-        <p>
-          The main approach of the Framework7 is to give you an opportunity to create iOS and Android (Material) apps with HTML, CSS and JavaScript easily and clear. Framework7 is full of freedom. It doesn't limit your imagination or offer ways of any solutions somehow. Framework7 gives you freedom!
-        </p>
-        <p>
-          Framework7 is not compatible with all platforms. It is focused only on iOS and Android (Material) to bring the best experience and simplicity.
-        </p>
-        <p>
-          Nuxt7 is a Nuxt.js module which adds everything is needed to make a complete and fast PWA app using Framework7.
-        </p>
+          <p>Website ini adalah website untuk mengelola peralatan dan juga data log yang dimasukkan oleh petugas</p>
+          <p>Halam Utama menampilkan kalendar bulan beserta dengan isian/catatan per hari nya. Klik hari untuk melihat catatan dalam hari tersebut</p>
+          <p class="title"> User</p>
+          <p class="subheading">Membuat User Baru</p>
+          <ol>
+            <li> Silakan klik menu  <v-icon>person</v-icon> <span class="body-2">User</span>  pada bilah menu disamping kiri</li>
+            <li> Silakan tekan tombol <v-btn flat color="primary">TAMBAH BARU</v-btn> untuk menambahkan user baru  </li>
+            <li> Isi semua data yang diperlukan </li>
+            <li> Kemudian klik <v-btn> SIMPAN </v-btn></li>
+          </ol>
+          <p class="subheading">Mengelola User</p>
+          <ol>
+            <li> Silakan klik menu  <v-icon>person</v-icon> <span class="body-2">User</span>  pada bilah menu disamping kiri</li>
+            <li> Data user akan muncul</li>
+            <li> Ketikkan nama pengguna diikuti Enter untuk melakukan pencarian </li>
+            <li> Klik ikon <v-icon>search</v-icon> untuk melihat detail</li>
+            <li> Klik ikon <v-icon>edit</v-icon> untuk mengedit</li>
+            <li> Klik ikon <v-icon>delete</v-icon> untuk menghapus</li>
+          </ol>
+          <br/>
+          <p class="title"> Fasilitas dan Sub Fasilitas</p>
+          <p>Fasilitas dan Sub Fasilitas adalah data yang menyatakan kelompok dari sebuah peralatan. Data ini diperlukan untuk membuat sebuah peralatan baru</p>
+          <p class="subheading">Mebuat baru</p>
+          <ol>
+            <li> Silakan klik menu  <v-icon>bookmarks</v-icon><span class="body-2">Fasilitas</span>/<v-icon>bookmark</v-icon> <span class="body-2">Subfasilitas</span>  pada bilah menu disamping kiri</li>
+            <li> Silakan tekan tombol <v-btn flat color="primary">TAMBAH BARU</v-btn> untuk menambahkan  baru  </li>
+            <li> Isi semua data yang diperlukan </li>
+            <li> Kemudian klik <v-btn> SIMPAN </v-btn></li>
+          </ol>
+          <p class="subheading">Mengelola</p>
+          <ol>
+            <li> Silakan klik menu  <v-icon>bookmarks</v-icon><span class="body-2">Fasilitas</span>/<v-icon>bookmark</v-icon><span class="body-2">Subfasilitas</span>  pada bilah menu disamping kiri</li>
+            <li> Data akan muncul</li>
+            <li> Ketikkan nama pengguna diikuti Enter untuk melakukan pencarian </li>
+            <li> Klik ikon <v-icon>search</v-icon> untuk melihat detail</li>
+            <li> Klik ikon <v-icon>edit</v-icon> untuk mengedit</li>
+            <li> Klik ikon <v-icon>delete</v-icon> untuk menghapus</li>
+          </ol>
+          <br/>
+          <p class="title"> Peralatan</p>
+          <p>Peralatan adalah peralatan di Bandara yang akan diperiksa oleh petugas</p>
+          <p class="subheading">Mebuat baru</p>
+          <ol>
+            <li> Silakan klik menu  <v-icon>business</v-icon><span class="body-2">Peralatan</span>  pada bilah menu disamping kiri</li>
+            <li> Silakan tekan tombol <v-btn flat color="primary">TAMBAH BARU</v-btn> untuk menambahkan  baru  </li>
+            <li> Isi semua data yang diperlukan </li>
+            <li> Kemudian klik <v-btn> SIMPAN </v-btn></li>
+          </ol>
+          <p class="subheading">Mengelola</p>
+          <ol>
+            <li> Silakan klik menu  <v-icon>business</v-icon><span class="body-2">Peralatan</span>  pada bilah menu disamping kiri</li>
+            <li> Data  akan muncul</li>
+            <li> Ketikkan nama pengguna diikuti Enter untuk melakukan pencarian </li>
+            <li> Data peralatan dapat didownload dalam format CSV/Excel melalui tombol <v-btn>DOWNLOAD</v-btn> </li>
+            <li> Klik ikon <v-icon>search</v-icon> untuk melihat detail</li>
+            <li> Klik ikon <v-icon>edit</v-icon> untuk mengedit</li>
+            <li> Klik ikon <v-icon>delete</v-icon> untuk menghapus</li>
+          </ol>
+          <br/>
+          <p class="title"> Logs</p>
+          <p>Logs adalah catatan oleh petugas terhadap peralatan tertentu</p>
+          <p class="subheading">Mengelola</p>
+          <ol>
+            <li> Silakan klik menu  <v-icon>history</v-icon><span class="body-2">Logs</span>  pada bilah menu disamping kiri</li>
+            <li> Data user akan muncul</li>
+            <li> Pilih tanggal (dari tanggal ke tanggal) untuk menampilkan data history dalam kurun waktu tertentu </li>
+            <li> Data peralatan dapat didownload dalam format CSV/Excel melalui tombol <v-btn>DOWNLOAD</v-btn> </li>
+            <li> Klik ikon <v-icon>search</v-icon> untuk melihat detail</li>
+          </ol>
         </v-card-text>
       </v-card>
     </v-container>

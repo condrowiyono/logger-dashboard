@@ -7,7 +7,7 @@
           <qr-code v-if="item.qrcode" :text="item.qrcode"></qr-code>
           <div v-else>No Qr Code </div>
           <v-flex >
-            <v-btn icon title="Regenerate qrcode">
+            <v-btn @click="regenerateQrcode" icon title="Regenerate qrcode">
               <v-icon>refresh</v-icon>
             </v-btn>
             <span style="font-family: 'Oxygen Mono', monospace; font-size:20px">{{item.qrcode}}</span>
@@ -88,5 +88,26 @@ export default {
       },
     }),
   },
+  methods: {
+    regenerateQrcode() {
+      this.$dialog.warning({
+        persistent: true,
+        title: 'Generate QR Ulang',
+        text: `Apakah anda yakin untuk melakukan generate QRCODE ulang?`,
+        actions: {
+          false: 'Tidak',
+          true: {
+            text: 'Ya',
+            handle: () => {
+              this.$axios.put(`/equipments/generate-qrcode/${this.item.id}`,{}).then((res)=> {
+                this.$dialog.message.success(res.data.message, { position: 'bottom'});
+                this.$router.replace('/equipments')
+              })
+            }
+          }
+        }
+      })
+    }
+  }
 }
 </script>
